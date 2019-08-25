@@ -234,7 +234,13 @@ def winning_team
       end
     end
   end
-  
+
+  if away > home
+    return game_hash[:away][:team_name]
+  elsif home > away 
+    return game_hash[:home][:team_name]
+  else "They tied!"
+  end
 
   return "Brooklyn Nets"
 end
