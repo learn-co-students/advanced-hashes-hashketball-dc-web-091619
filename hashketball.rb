@@ -107,7 +107,7 @@ def game_hash
                 :slam_dunks => 0
                 }, 
                 
-                {:player_name => "Brendan Haywood",
+                {:player_name => "Kemba Walker",
                 :number => 33, 
                 :shoe => 15,
                 :points => 6,
@@ -124,8 +124,13 @@ end
 
 def num_points_scored(players_name)
   game_hash.each do |place, team|
-    team[:players].each do |attribute, data|
-      return player[:points] if player[:player_name] == players_name
+    team.each do |attribute, data|
+      if attribute == :players
+        data.each do |player|
+          if player[:players_name] == players_name
+            return player[:points]
+          end
+        end
     end
   end
 end
