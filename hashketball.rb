@@ -238,9 +238,10 @@ def winning_team
       team[:players].each do |player|
         new_hash[team[:team_name]] += player[:points]
     end
-    #binding.pry
   end
-  new_hash
+  #binding.pry
+  newer_hash = new_hash.max_by {|team, points| points}
+  newer_hash.first
 end
 
 def player_with_longest_name
@@ -258,10 +259,19 @@ end
 #Super Bonus
 
 def long_name_steals_a_ton?
+  most_steals = 0 
+  mvp = ''
   game_hash.each do |place, team|
     team[:players].each do |player|
+       steals = player[:steals]
+      if steals > most_steals
+        most_steals = steals
+        mvp = player[:player_name]
+      end
     end
   end
+  #binding.pry
+  mvp == player_with_longest_name
 end
     
     
