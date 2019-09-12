@@ -47,20 +47,11 @@ end
 
 def num_points_scored(name)
 
- game_hash.each{|item|
-   if item[:players].include? (name)
-     return item[:players][:player_name][:points]
-   end
- }
+  found_player = find_the_player(name)
+  
+  found_player[:points]
 
 end
-
-
-# # Alternate code
-# def num_points_scored(player_n)
-#   player_stats(player_n)[:points]
-# end
-
 
 def shoe_size(name)
 
@@ -69,13 +60,6 @@ def shoe_size(name)
   found_player[:shoe]
 
 end
-
-
-# Alternate code
-# def shoe_size(player_n)
-#   player_stats(player_n)[:shoe]
-# end
-
 
 def team_colors(team_name)
   game_hash.each do |home_away, keys|
