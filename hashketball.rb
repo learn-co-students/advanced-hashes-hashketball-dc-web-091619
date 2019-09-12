@@ -87,7 +87,7 @@ def game_hash
                 
                 {:player_name => "DeSagna Diop",
                 :number => 1, 
-                :shoe => 19,
+                :shoe => 14,
                 :points => 24,
                 :rebounds => 12,
                 :assists => 6,
@@ -138,7 +138,7 @@ end
 
 def shoe_size(players_name)
   game_hash.each do |place, team|
-    team[:players].each do |attribute, data|
+    team.each do |attribute, data|
       if attribute == :players
         data.each do |player|
           if player[:player_name] == players_name
