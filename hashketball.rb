@@ -49,7 +49,7 @@ def game_hash
                 
                 {:player_name => "Jason Terry",
                 :number => 31, 
-                :shoe => 11,
+                :shoe => 15,
                 :points => 19,
                 :rebounds => 2,
                 :assists => 2,
@@ -80,7 +80,7 @@ def game_hash
                 :points => 12,
                 :rebounds => 4,
                 :assists => 7,
-                :steals => 7,
+                :steals => 22,
                 :blocks => 15,
                 :slam_dunks => 10
                 }, 
@@ -88,7 +88,7 @@ def game_hash
                 {:player_name => "DeSagna Diop",
                 :number => 1, 
                 :shoe => 19,
-                :points => 26,
+                :points => 24,
                 :rebounds => 12,
                 :assists => 6,
                 :steals => 3,
@@ -113,7 +113,7 @@ def game_hash
                 :points => 6,
                 :rebounds => 12,
                 :assists => 12,
-                :steals => 22,
+                :steals => 7,
                 :blocks => 5,
                 :slam_dunks => 12
                 } 
