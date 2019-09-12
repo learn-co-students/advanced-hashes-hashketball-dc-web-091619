@@ -158,6 +158,25 @@ def team_colors(team_name)
   end
 end
 
+def team_names
+  game_hash.map do |place, team|
+    team[:team_name]
+  end
+end
+
+def player_numbers(team_name)
+  game_hash.each do |place, team|
+    if team[:team_name] == team_name
+      team.each do |attributes, data|
+        if attributes == :players
+          data.each do |player, stats|
+          end
+        end
+      end
+    end
+  end
+end
+
 
     
     
