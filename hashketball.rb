@@ -214,6 +214,23 @@ def big_shoe_rebounds
   return rebounds
 end
 
+#Bonus
+
+def most_points_scored
+  most_points = 0
+  mvp = ''
+  game_hash.each do |home_away, keys|
+    keys[:players].each do |player|
+      points = player[:points]
+      if points > most_points
+        most_points = points
+        mvp = player[:player_name]
+      end
+    end
+  end
+  mvp
+end
+
 def winning_team
   new_hash = {}
   game_hash.each do |place, team|
@@ -226,6 +243,17 @@ def winning_team
   return new_hash
 end
 
+def player_with_longest_name
+  longest = ''
+  longest_length = 0
+  game_hash.each do |home_away, keys|
+    keys[:players].each do |player|
+      name_length = player[:player_name].length
+      longest, longest_length = player[:player_name], name_length if name_length > longest_length
+    end
+  end
+  return longest
+end
 
     
     
