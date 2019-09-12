@@ -1,3 +1,4 @@
+require "pry"
 def game_hash
   {
     :home => {:team_name => "Brooklyn Nets", 
@@ -40,7 +41,7 @@ def game_hash
                 :number => 1, 
                 :shoe => 19,
                 :points => 26,
-                :rebounds => 12,
+                :rebounds => 11,
                 :assists => 6,
                 :steals => 3,
                 :blocks => 8,
@@ -90,9 +91,9 @@ def game_hash
                 :shoe => 14,
                 :points => 24,
                 :rebounds => 12,
-                :assists => 6,
-                :steals => 3,
-                :blocks => 8,
+                :assists => 12,
+                :steals => 4,
+                :blocks => 5,
                 :slam_dunks => 5
                 }, 
                 
@@ -178,6 +179,51 @@ def player_numbers(team_name)
     end
   end
   return numbers
+end
+
+def player_stats(players_name)
+  new_hash = {}
+  game_hash.each do |place, team|
+    team.each do |attributes, data|
+      if attributes == :players 
+        data.each do |player|
+          if player[:player_name] == players_name
+            new_hash = player.delete_if do |k, v|
+              k == :player_name
+            end
+          end
+        end
+      end
+    end
+  end
+  new_hash
+end
+
+def big_shoe_rebounds
+  biggest = 0 
+  rebounds = 0 
+  game_hash.each do |place, team|
+    team[:players].each do |player|
+      size = player[:shoe]
+      if size > biggest
+        biggest = size
+        rebounds = player[:rebounds]
+      end
+    end
+  end
+  return rebounds
+end
+
+def winning_team
+  new_hash = {}
+  game_hash.each do |place, team|
+    new_hash[team[:team_name]] = 0
+      team[:players].each do |player|
+        new_hash[team[:team_name]] += player[:points]
+    end
+    #binding.pry
+  end
+  return new_hash
 end
 
 
