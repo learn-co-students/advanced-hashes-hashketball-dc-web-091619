@@ -240,7 +240,7 @@ def winning_team
     end
     #binding.pry
   end
-  return new_hash
+  new_hash
 end
 
 def player_with_longest_name
