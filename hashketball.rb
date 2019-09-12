@@ -255,6 +255,14 @@ def player_with_longest_name
   return longest
 end
 
+#Super Bonus
+
+def long_name_steals_a_ton?
+  game_hash.each do |place, team|
+    team[:players].each do |player|
+    end
+  end
+end
     
     
 
