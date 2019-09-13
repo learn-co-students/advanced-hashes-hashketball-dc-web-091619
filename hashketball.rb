@@ -1,6 +1,6 @@
-require "pry"
+require 'pry'
 def game_hash
-hash = {
+hash = { 
   :home => {:team_name => 'Brooklyn Nets',
             :colors => ['Black','White'],
             :players => [
@@ -52,6 +52,7 @@ hash = {
                 :slam_dunks => 1}
             ]
           },
+          
 :away => {:team_name => 'Charlotte Hornets',
             :colors => ['Turquoise', 'Purple'],
             :players => [
@@ -102,5 +103,7 @@ hash = {
               :slam_dunks => 12}
             ]
       }
-    }
+     
+    }  
+    return hash  binding.pry
 end
