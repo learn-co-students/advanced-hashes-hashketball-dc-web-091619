@@ -15,6 +15,7 @@ def game_hash
     :players => [{
       :number => '',
       :shoe => ''}]
+}
 end
 
 
