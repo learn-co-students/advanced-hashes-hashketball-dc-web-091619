@@ -122,3 +122,7 @@ hash = game_hash
     end
   end
 end
+
+def shoe_size(player_name)
+
+end
