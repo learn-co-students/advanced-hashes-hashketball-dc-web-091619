@@ -105,5 +105,5 @@ hash = {
       }
      
     }  
-    return hash  binding.pry
+    return hash  
 end
