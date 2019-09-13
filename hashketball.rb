@@ -154,8 +154,8 @@ def team_names
     teaminfo.each do |key, value|
       if key == :team_name
       new_array << value
-        end
       end
     end
-    return new_array
   end
+  return new_array
+end
