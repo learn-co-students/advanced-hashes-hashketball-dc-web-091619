@@ -107,3 +107,18 @@ hash = {
     }  
     return hash  
 end
+
+def num_points_scored(player_name)
+hash = game_hash
+  hash.each do |team, teaminfo|
+    teaminfo.each do |key, value|
+      if key == :players
+        value.each do |info|
+          if player_name == info[:player_name]
+            return info[:points]
+          end
+        end
+      end
+    end
+  end
+end
