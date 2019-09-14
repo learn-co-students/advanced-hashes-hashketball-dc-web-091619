@@ -164,30 +164,55 @@ def player_numbers(team_name)
   hash = game_hash
   num_arr = []
   hash = game_hash
-  hash.each do |team, teaminfo|
-    next unless teaminfo[:team_name] == team_name
-   teaminfo.each do |key,value|
-    next unless key == :players
-      value.each do |info|
-        num_arr << info[:number]
+    hash.each do |team, teaminfo|
+      next unless teaminfo[:team_name] == team_name
+    teaminfo.each do |key,value|
+      next unless key == :players
+        value.each do |info|
+          num_arr << info[:number]
+      end
     end
   end
-
-end
 return num_arr
 end
 
-# def player_stats(player_n)
-#   hash = game_hash
-#     stat_hash = {}
-#     hash.collect do |team, teaminfo|
-#       teaminfo.each do |key, value|
-#         next unless key[:players]
-#           hash[team][key].each do |player| 
-#   next unless player[:player_name] == player_n
-#   stat_hash = player
-#   end 
-#   end
-#   end
-#   return stat_hash
-# end
+
+def player_stats(player_name)
+  hash = game_hash
+  h = {}
+
+  hash.each do |team, teaminfo|
+    teaminfo.each do |key, value|
+      
+      if key == :players
+       value.each do |info|
+        
+      if player_name == info[:player_name]
+        h = info
+        h.delete(:player_name)
+          end
+        end
+      end
+    end
+  end
+  return h
+end
+
+def big_shoe_rebounds
+  hash = game_hash
+  big_shoe = 0
+  rebounds = 0
+    hash.each do |team,teaminfo|
+      teaminfo[:players].each do |player|
+        if player[:shoe] > big_shoe
+          big_shoe = player[:shoe]
+          rebounds = player[:rebounds]
+        end
+    end
+  end
+  return rebounds
+end
+
+  
+
+
