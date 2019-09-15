@@ -148,12 +148,9 @@ def player_numbers(team_name)
 end
 
 ## def player_stats(name)
-##  player(name).reduce({}) do |memo, (key,value)|
-##     if key! == "player_name"
-##       memo[key] = value
-##     end
-##   end
-##   return memo
+##   temp = player(name).dup
+##   temp.delete(:player_name)
+##   temp
 ## end
 
 def player_stats(name)
@@ -206,20 +203,46 @@ def most_points_scored
   player_name
 end
 
-def winning_team
-  points_total_home = 0
-  points_total_away = 0
-  game_hash[:home][:players].each do |player|
-      points_total_home = points_total_home + player[:points]
+
+
+
+
+def iterate_through_players_for(name, statistic)
+  game_hash.each do |_team, game_data|
+    game_data[:players].each do |player|
+      return player[statistic] if player[:player_name] == name
     end
-  game_hash[:away][:players].each do |player|
-      points_total_away = points_total_away + player[:points]
-    end
-  if points_total_home > points_total_away
-    game_hash[:home][:team_name]
-  else game_hash[:away][:team_name]
   end
 end
+
+def winning_team
+  scores = {"Brooklyn Nets" => 0, "Charlotte Hornets" => 0}
+  game_hash.each do |team, game_data|
+    game_data[:players].each do |player|
+      scores[game_data[:team_name]] += iterate_through_players_for(player[:player_name], :points)
+    end
+  end
+  scores.max_by { |k,v| v }.first
+end
+
+##  def winning_team
+##    points_total_home = 0
+##    points_total_away = 0
+##    game_hash[:home][:players].each do |player|
+##        points_total_home = points_total_home + player[:points]
+##      end
+##    game_hash[:away][:players].each do |player|
+##        points_total_away = points_total_away + player[:points]
+##      end
+##    if points_total_home > points_total_away
+##      game_hash[:home][:team_name]
+##    else game_hash[:away][:team_name]
+##    end
+##  end
+
+
+
+
 
 def player_with_longest_name
   name_count = 0
@@ -246,5 +269,9 @@ def long_name_steals_a_ton?
       end
     end
   end
-  return true if player_name == player_with_longest_name
+  if player_name == player_with_longest_name
+    return true 
+  else
+  return false
+  end
 end
